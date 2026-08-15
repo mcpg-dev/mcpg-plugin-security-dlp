@@ -1,0 +1,17 @@
+schema: mcpg.dev/plugin/v1
+id: dev.mcpg.tool-gate.dlp
+name: Data-Loss-Prevention Gate
+license: BUSL-1.1
+description: |
+  A ToolGate that scans tool arguments (pre-dispatch) and results
+  (post-dispatch) for secrets + PII via built-in regex detectors (AWS keys,
+  JWTs, emails, credit cards with Luhn validation, generic API keys, URL
+  credentials) plus operator custom patterns, and either blocks the call
+  (403 / -32050) or redacts the offending substrings. Pure logic, no network.
+  The matched secret value is never echoed into the deny message, error data,
+  logs, or metric labels — only detector names + counts. Fails closed on bad
+  config or an invalid regex.
+class: tool_gate
+runtime: native-cdylib-v1
+protocol_version: "1.0"
+required_capabilities: []

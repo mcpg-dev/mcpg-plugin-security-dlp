@@ -1,0 +1,27 @@
+[package]
+name = "mcpg-plugin-security-dlp"
+version = "0.1.0-alpha.15"
+license = "BUSL-1.1"
+edition = "2024"
+description = "Data-loss-prevention ToolGate plugin for MCPG (dev.mcpg.tool-gate.dlp) — detects/blocks/redacts secrets + PII in tool arguments and results."
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+mcpg-plugin-protocol = { git = "https://github.com/mcpg-dev/mcpg-plugin-protocol", tag = "v0.1.0-beta.13", version = "=0.1.0-beta.13" }
+mcpg-plugin-sdk = { git = "https://github.com/mcpg-dev/mcpg-plugin-sdk", tag = "v0.1.0-beta.13", version = "=0.1.0-beta.13" }
+mcpg-glob = { git = "https://github.com/mcpg-dev/mcpg-glob", tag = "v0.1.0-beta.13", version = "=0.1.0-beta.13" }
+anyhow = "1.0"
+# Pure-Rust regex (MIT OR Apache-2.0); transitive aho-corasick/memchr/
+# regex-automata/regex-syntax are all MIT/Apache, no native-tls/openssl.
+regex = "1.12"
+metrics = "0.24"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tracing = "0.1"
+
+[features]
+default = ["cdylib-export"]
+cdylib-export = []
+static-firstparty = []
