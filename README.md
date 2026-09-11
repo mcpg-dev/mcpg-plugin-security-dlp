@@ -52,7 +52,7 @@ plugins:
 ```
 
 To pull the published artifact instead of building it, write
-`source: { oci: ghcr.io/mcpg-dev/source-code/plugins/tool-gate-dlp:protocol-1 }`.
+`source: { oci: ghcr.io/mcpg-dev/plugins/tool-gate-dlp }`.
 The reference is platform-agnostic; the gateway resolves the variant for its own
 OS, architecture and libc.
 
